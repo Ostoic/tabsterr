@@ -12421,14 +12421,9 @@ async function() {
             available: o,
             viewport: s
         })
-    }
-    ;
+    };
     window.addEventListener("resize", ya(e, 100)),
-    (t.state.demo = {
-        enabled: true,
-        active: true
-    },
-    t.state.user = {
+    (t.state.user = {
         "profile": {
             "id": 0,
             "uid": 0,
@@ -12437,7 +12432,7 @@ async function() {
         },
         "hasPlus": true,
         "hasSubscription": true,
-        "isAdmin": true,
+        "isAdmin": false,
         "isModerator": false,
         "isLoggedIn": true
     },
