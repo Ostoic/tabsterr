@@ -12437,9 +12437,9 @@ async function() {
         },
         "hasPlus": true,
         "hasSubscription": true,
-        "isAdmin": false,
+        "isAdmin": true,
         "isModerator": false,
-        "isLoggedIn": false
+        "isLoggedIn": true
     },
     await Promise.resolve()),
     b(i(I.Provider, {
