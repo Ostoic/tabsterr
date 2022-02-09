@@ -20,7 +20,7 @@ chrome.webRequest.onHeadersReceived.addListener(
             return {responseHeaders: details.responseHeaders};
         }
     },
-    {urls: [ "https://raw.githubusercontent.com/Ostoic/tabsterr/main/scripts/*.js" ] },
+    {urls: [ "https://raw.githubusercontent.com/Ostoic/tabsterr/main/scripts/js/*.js" ] },
     ["blocking", "responseHeaders"]
 );
 
@@ -36,7 +36,7 @@ chrome.webRequest.onBeforeRequest.addListener(
         // }
         if (details.url == "https://www.songsterr.com/static/index.52ddb71b.js")
         {
-            return {redirectUrl: "https://raw.githubusercontent.com/Ostoic/tabsterr/main/scripts/index.52ddb71b.js" };
+            return {redirectUrl: "https://raw.githubusercontent.com/Ostoic/tabsterr/main/scripts/js/index.52ddb71b.js" };
         }
     },
     {urls: ["https://www.songsterr.com/static/index.52ddb71b.js"]},
