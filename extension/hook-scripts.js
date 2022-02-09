@@ -29,9 +29,9 @@ chrome.webRequest.onHeadersReceived.addListener(
 
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
-        // const result = github_script_regex.exec(details.url);
+        // const result = songsterr_script_regex.exec(details.url);
         // if (result) {
-        //     console.log("Fixing github redirect script to github script");
+        //     console.log("Redirecting script");
         //     return {redirectUrl: "https://www.songsterr.com/static/" + result[1]};
         // }
         if (details.url == "https://www.songsterr.com/static/index.52ddb71b.js")

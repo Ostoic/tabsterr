@@ -9,6 +9,6 @@
     "*://*/*"
   ],
   "background": {
-    "scripts": ["hook-index.js"]
+    "scripts": ["hook-scripts.js"]
 }
 }
