@@ -6,7 +6,7 @@ if [ ! -f ./get-latest-index.sh ] || [ ! -f ./patch-index.sh ]; then
 fi
 
 while true; do 
-  sleep 600
+  sleep 5
   echo 'Checking for new index...'
   if ! ./get-latest-index.sh; then
     continue
