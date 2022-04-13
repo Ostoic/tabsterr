@@ -5,6 +5,11 @@ if [ $# -ne 1 ]; then
   exit -1
 fi
 
+if [ ! -f $1 ]; then
+  echo Error: Unable to find "$1"
+  exit -2
+fi
+
 function make-patch() {
   num_bytes_before_patch1=$(wc -c $3 | cut -d ' ' -f1)
   if [ $# == 4 ]; then
@@ -21,14 +26,14 @@ function make-patch() {
   fi
 }
 
-FIND1='";var w={app:"Cdy1hg"'
-PATCH1='";document.getElementById("app").classList.remove("Cdy160");var w={app:"Cdy1hg"'
+FIND1='const w={app:"Cdy1hg"'
+PATCH1='document.getElementById("app").classList.remove("Cdy160");const w={app:"Cdy1hg"'
 
-FIND2='await Promise.resolve(),b(i(I.Provider,{value:t}'
-PATCH2='(t.state.user={profile:null,hasPlus:true,hasSubscription:true,isAdmin:false,isModerator:false,isLoggedIn:false}, await Promise.resolve()),b(i(I.Provider,{value:t}'
+FIND2='JSON.parse(document.getElementById("state").innerHTML)'
+PATCH2='JSON.parse(document.getElementById("state").innerHTML.state.user={profile:null,hasPlus:true,hasSubscription:true,isAdmin:false,isModerator:false,isLoggedIn:false})'
 
 FIND3='\./([a-zA-Z0-9.]+)'
-PATCH3='https://www.songsterr.com/static/\1'
+PATCH3='https://www.songsterr.com/static/latest/\1'
 
 echo "Adding css patch..."
 make-patch "$FIND1" "$PATCH1" $1 
