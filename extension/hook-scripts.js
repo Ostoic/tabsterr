@@ -20,7 +20,7 @@ chrome.webRequest.onHeadersReceived.addListener(
     ["blocking", "responseHeaders"]
 );
 
-const songsterr_index_js_regex = /https?[:][/]{2}www.songsterr.com[/]static[/]index.([a-zA-Z0-9.]+).js/ig;
+const songsterr_index_js_regex = /https?[:][/]{2}www.songsterr.com[/]static[/]latest[/]index.([a-zA-Z0-9.]+).js/ig;
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
         const result = songsterr_index_js_regex.exec(details.url);
@@ -31,6 +31,6 @@ chrome.webRequest.onBeforeRequest.addListener(
             return {redirectUrl: github_index_script};
         }
     },
-    {urls: ["https://www.songsterr.com/static/index.*.js"]},
+    {urls: ["https://www.songsterr.com/static/latest/index.*.js"]},
     ["blocking"]
 );
