@@ -2,12 +2,12 @@
 
 if [ $# -ne 1 ]; then
   echo "Usage: $0 index.js"
-  exit -1
+  exit 1
 fi
 
 if [ ! -f $1 ]; then
   echo Error: Unable to find "$1"
-  exit -2
+  exit 2
 fi
 
 function make-patch() {
@@ -29,8 +29,8 @@ function make-patch() {
 FIND1='const w={app:"Cdy1hg"'
 PATCH1='document.getElementById("app").classList.remove("Cdy160");const w={app:"Cdy1hg"'
 
-FIND2='JSON.parse(document.getElementById("state").innerHTML)'
-PATCH2='JSON.parse(document.getElementById("state").innerHTML).state.user={profile:null,hasPlus:true,hasSubscription:true,isAdmin:false,isModerator:false,isLoggedIn:false})'
+FIND2='JSON.parse(document.getElementById("state").innerHTML'
+PATCH2='JSON.parse(document.getElementById("state").innerHTML.replaceAll('"'"'"user":{"profile":null,"hasPlus":false,"hasSubscription":false,"isAdmin":false,"isModerator":false,"isLoggedIn":false}'"'"', '"'"'"user":{"profile":null,"hasPlus":true,"hasSubscription":true,"isAdmin":false,"isModerator":false,"isLoggedIn":false}'"'"'))'
 
 FIND3='\./([a-zA-Z0-9.]+)'
 PATCH3='https://www.songsterr.com/static/latest/\1'

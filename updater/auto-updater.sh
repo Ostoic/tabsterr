@@ -1,6 +1,7 @@
 #!/bin/bash
 INDEX_ERR_ALREADY_PATCHED=1
 INDEX_ERR_WGET=2
+UPDATE_SLEEP_TIME=3600
 
 update-repo() {
   mv index.*.js ../scripts/js/
@@ -25,12 +26,12 @@ while true; do
     exit -1
   elif [ $index -ne $INDEX_ERR_ALREADY_PATCHED ]; then
     echo 'Patching index...'
-    if ./patch-index.sh index.*.js 2>/dev/null; then
+    if ./patch-index.sh index.*.js; then
       update-repo
     fi
   fi
   
-  sleep 3600
+  sleep $UPDATE_SLEEP_TIME
   echo 'Checking for new index...'
   ./get-latest-index.sh
   index=$?
